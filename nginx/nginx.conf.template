@@ -11,11 +11,11 @@ http {
     auth_jwt off; ## Enable by default
   
     
-    ## Rate limit for calendar
-    limit_req_zone $binary_remote_addr zone=calendar:10m rate=10r/s;
+    ## Rate limit for ems
+    limit_req_zone $binary_remote_addr zone=ems:10m rate=10r/s;
 
-    upstream calendar {
-        server calendar:8080;
+    upstream ems {
+        server ems:8080;
     }
     
     # Main server block to handle incoming requests
@@ -25,10 +25,10 @@ http {
         server_name _;
         root /usr/share/nginx/html/public;
         
-        location /calendar {
+        location / {
             auth_jwt off;
-            limit_req zone=calendar burst=10 nodelay;
-            proxy_pass http://calendar/;
+            limit_req zone=ems burst=10 nodelay;
+            proxy_pass http://ems/;
             proxy_set_header Host $host;
         }
 

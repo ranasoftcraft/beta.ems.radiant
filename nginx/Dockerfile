@@ -7,11 +7,11 @@ LABEL author="sandeep.rana(aimhigh.excel@gmail.com)"
 RUN mkdir -p /run/nginx
 
 ## Get ranasoftcraft.co.in 
-RUN apk add git
+# RUN apk add git
 
-RUN git clone https://github.com/ranasoftcraft/ranasoftcraft.co.in-2.git
+# RUN git clone https://github.com/ranasoftcraft/ranasoftcraft.co.in-2.git
 
-RUN cp -r ranasoftcraft.co.in-2/public/ /usr/share/nginx/html/
+# RUN cp -r ranasoftcraft.co.in-2/public/ /usr/share/nginx/html/
 
 
 ## copy nginx.conf.template
